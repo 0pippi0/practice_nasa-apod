@@ -7,10 +7,14 @@ import * as api from './lib/api';
 
 
 class App extends Component {
-  getAPOD = (date) => {
-    api.getAPOD(date).then((response) => {
+  getAPOD = async (date) => {
+    try {
+      const response = await api.getAPOD(date);
       console.log(response);
-    });
+    } catch (e) {
+      // 오류가 났을 경우
+      console.log(e);
+    }
   }
   
   componentDidMount() {
